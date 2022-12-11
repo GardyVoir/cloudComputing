@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Node.js File Uploader</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 1.5rem;
+                background-color: #333;
+                color: whitesmoke;
+            }
+    
+            input,
+            button {
+                font: inherit;
+                width: max-content;
+            }
+    
+            form {
+                display: flex;
+                flex-flow: column nowrap;
+                gap: 1.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>AWS Storage</h1>
+        <form action="fileupload" method="post" enctype="multipart/form-data">
+        <input type="file" name="filetoupload"><br>
+        <input type="submit">
+        </form>
+        <table class="table">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Type</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if(data.length){ for(var i = 0; i< data.length; i++) {%>
+              <tr>
+                <th scope="row"><%= (i+1) %></th>
+                <td><%= data[i].name%></td>
+                <td><%= data[i].type%></td>
+              </tr>
+              <% } }else{ %>
+              <tr>
+                <td>No data</td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+    </body>
+</html>
