@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Node.js File Uploader</title>
+        <title>AWS Drive</title>
         <style>
             body {
                 font-family: Arial, Helvetica, sans-serif;
@@ -24,6 +24,12 @@
                 flex-flow: column nowrap;
                 gap: 1.5rem;
             }
+            tr {
+              padding: 20px;
+            }
+            td {
+              padding: 10px
+            }
         </style>
     </head>
     <body>
@@ -35,17 +41,19 @@
         <table class="table">
             <thead>
               <tr>
+                <th>Id</th>
                 <th>Nom</th>
-                <th>Type</th>
-                <th>Action</th>
+                <th>Date</th>
+                <!-- <th>Action</th> -->
               </tr>
             </thead>
             <tbody>
-              <% if(data.length){ for(var i = 0; i< data.length; i++) {%>
+              <% if(data !== undefined && data.length){ for(var i = 0; i< data.length; i++) {%>
               <tr>
                 <th scope="row"><%= (i+1) %></th>
-                <td><%= data[i].name%></td>
-                <td><%= data[i].type%></td>
+                <td><%= data[i].Key%></td>
+                <td><%= data[i].LastModified.toISOString().replace(/T/, ' ').replace(/\..+/, '')%></td>
+                <!-- <td><a href="/file/<%= i%>">Télécharger</a></td> -->
               </tr>
               <% } }else{ %>
               <tr>
